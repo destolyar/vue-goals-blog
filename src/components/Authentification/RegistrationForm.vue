@@ -10,7 +10,7 @@ const repeatPasswordRef = ref("")
 </script>
 
 <template>
-  <form class="form">
+  <form :class=$style.form>
     <FormLegend legend-text="Sign Up"/>
     <BaseInput label="Email" type="email" v-model="emailRef" />
     <BaseInput label="Password" type="password" v-model="passwordRef" />
@@ -20,7 +20,7 @@ const repeatPasswordRef = ref("")
   </form>
 </template>
 
-<style scoped>
+<style module lang="scss">
 .form {
   width: 100%;
   max-width: 400px;

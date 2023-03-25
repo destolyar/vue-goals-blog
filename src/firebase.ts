@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore, collection } from 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore'
 import { getAnalytics } from "firebase/analytics";
 
 export const firebaseApp = initializeApp({
