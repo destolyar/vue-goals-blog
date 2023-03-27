@@ -60,6 +60,14 @@ export default {
 @import "../assets/breakpoints.scss";
 .fixedGoalsContainer {
   width: 40%;
+
+  @include desktop {
+    width: 60%;
+  }
+
+  @include laptop {
+    width: 100%;
+  }
 }
 
 .fixedGoalsTitle {
