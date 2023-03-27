@@ -1,21 +1,41 @@
 <script setup lang="ts">
-import { db } from '@/firebase';
-import { collection } from 'firebase/firestore';
-import { useCollection } from 'vuefire';
 import DiaryListItemVue from './DiaryListItem.vue';
+import { db } from '@/firebase';
+import { QuerySnapshot, collection, getDocs, query, type DocumentData, Timestamp } from '@firebase/firestore';
+import { onMounted, ref } from 'vue';
 
-const diaryEntries = useCollection(collection(db, "diary"))
+interface DiaryEntry {
+  id: string;
+  title: string;
+  text: string;
+  date: Timestamp;
+}
+
+const diaryRef = collection(db, "diary");
+const diaryQuery = query(diaryRef);
+const diaryEntries = ref<DiaryEntry[]>([]);
+
+const fetchData = async () => {
+  const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(diaryQuery);
+  diaryEntries.value = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  })) as DiaryEntry[];
+};
+
+onMounted(fetchData);
 </script>
 
 <template>
   <section :class=$style.container>
-    <DiaryListItemVue v-for="entry in diaryEntries.reverse()" v-bind:title="entry.title" v-bind:timestamp="entry.date" v-bind:id="entry.id"
-      v-bind:text="entry.text" />
+    <DiaryListItemVue v-for="entry in diaryEntries" v-bind:title="entry.title" v-bind:timestamp="entry.date"
+      v-bind:id="entry.id" v-bind:text="entry.text" />
   </section>
 </template>
 
 <style module lang="scss">
 @import "../../assets/breakpoints.scss";
+
 .container {
   display: grid;
   grid-template-columns: 1fr;

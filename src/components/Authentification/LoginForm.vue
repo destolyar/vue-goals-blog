@@ -9,7 +9,7 @@ const passwordRef = ref("")
 </script>
 
 <template>
-  <form class="form">
+  <form :class=$style.form>
     <FormLegend legend-text="Sign In" />
 
     <BaseInput label="Email" type="email" v-model="emailRef" />
@@ -19,7 +19,7 @@ const passwordRef = ref("")
   </form>
 </template>
 
-<style>
+<style module lang="scss">
 .form {
   width: 100%;
   max-width: 400px;

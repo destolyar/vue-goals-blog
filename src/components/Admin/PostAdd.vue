@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { db } from '@/firebase';
-import { Timestamp, addDoc, collection, getDocs, query, where } from '@firebase/firestore';
 import SubmitButton from '../sharedComponent/SubmitButton.vue';
 import BaseInput from '../sharedComponent/BaseInput.vue';
 import TextArea from '../sharedComponent/TextArea.vue';
+import { db } from '@/firebase';
+import { Timestamp, addDoc, collection, getDocs, query, where } from '@firebase/firestore';
 import { ref } from 'vue';
-import { useCollection } from 'vuefire';
 </script>
 
 <script lang="ts">

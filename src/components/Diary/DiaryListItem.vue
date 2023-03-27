@@ -43,6 +43,7 @@ export default {
 <style module lang="scss">
 @import "../../assets/colors.scss";
 .itemContainer {
+  height: fit-content;
   display: flex;
   flex-direction: column;
   overflow: hidden;

@@ -8,11 +8,11 @@ defineProps({
 </script>
 
 <template>
-  <h1 class="page-title">{{ title }}</h1>
+  <h1 :class=$style.pageTitle>{{ title }}</h1>
 </template>
 
-<style class="page-title">
-.page-title {
+<style module lang="scss">
+.pageTitle {
   font-size: 2rem;
 }
 </style>

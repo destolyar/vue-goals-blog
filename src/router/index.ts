@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AdminPanelView from '../views/AdminPanelView.vue'
-
+import PostViewVue from '@/views/PostView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,7 +9,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       meta: {
-        title: "Goals blog"
+        title: "DreamChaser Blog",
       },
       component: HomeView
     },
@@ -20,7 +19,7 @@ const router = createRouter({
       meta: {
         title: "About"
       },
-      component: () => import('../views/AboutView.vue')
+      component: () => import('@/views/AboutView.vue')
     },
     {
       path: '/login',
@@ -28,7 +27,7 @@ const router = createRouter({
       meta: {
         title: "Login"
       },
-      component: () => import('../views/LoginView.vue')
+      component: () => import('@/views/LoginView.vue')
     },
     {
       path: '/register',
@@ -36,14 +35,14 @@ const router = createRouter({
       meta: {
         title: "Register"
       },
-      component: () => import('../views/RegistrationView.vue')
+      component: () => import('@/views/RegistrationView.vue')
     },
     {
       path: '/post/:postId',
       meta: {
         title: "Goals blog"
       },
-      component: () => import('../views/PostView.vue')
+      component: PostViewVue
     },
     {
       path: '/admin',
@@ -51,7 +50,7 @@ const router = createRouter({
       meta: {
         title: "New results?"
       },
-      component: AdminPanelView
+      component: () => import('@/views/AdminPanelView.vue')
     }
   ]
 })

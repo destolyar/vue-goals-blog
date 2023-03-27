@@ -14,7 +14,6 @@ export default {
   <Header />
   <main :class=$style.layout>
     <slot></slot>
-    <Sidebar />
   </main>
 </template>
 
@@ -22,8 +21,6 @@ export default {
 @import "../../assets/breakpoints.scss";
 
 .layout {
-  display: grid;
-  grid-template-columns: 1fr 400px;
   padding: 20px 80px;
 
   @include laptop {

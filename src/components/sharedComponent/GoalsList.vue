@@ -1,10 +1,25 @@
 <script setup lang="ts">
-import { useCollection } from 'vuefire';
 import GoalsListItem from '../Layouts/GoalsListItem.vue';
-import { collection } from 'firebase/firestore';
-import { db } from '@/firebase';
 
-const goalsEntries = useCollection(collection(db, "goals"))
+</script>
+
+<script lang="ts">
+interface GoalEntry {
+  id: string;
+  goal: string;
+  goalValue: number;
+  currentValue: number;
+  isAvailable: boolean
+}
+
+export default {
+  props: {
+    goalsEntries: {
+      type: Object as () => GoalEntry[],
+      required: true
+    }
+  }
+}
 </script>
 
 <template>
@@ -24,7 +39,6 @@ const goalsEntries = useCollection(collection(db, "goals"))
   height: fit-content;
   border-radius: 10px;
   padding: 20px;
-  margin-left: 40px;
   gap: 20px;
   border: 2px solid $primary-border;
 

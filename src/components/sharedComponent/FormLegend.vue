@@ -6,10 +6,10 @@ defineProps({
 
 
 <template>
-  <legend class="legend">{{ legendText }}</legend>
+  <legend :class=$style.legend>{{ legendText }}</legend>
 </template>
 
-<style>
+<style module lang="scss">
 .legend {
   margin: 0 auto;
   font-size: 25px;

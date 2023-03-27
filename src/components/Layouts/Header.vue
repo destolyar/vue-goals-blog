@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import Logo from '../sharedComponent/Logo.vue';
 </script>
 
 <template>
   <header :class=$style.header>
-    <nav>
+    <Logo />
+    <nav :class=$style.links>
     <RouterLink :class=$style.link to="/">Home</RouterLink>
     <RouterLink :class=$style.link to="/about">About</RouterLink>
-  </nav>
+    </nav>
     <!-- <section :class=$style.auth>
-        <RouterLink :class=$style.login to="/login">Login</RouterLink>
-        <RouterLink :class=$style.register to="/register">Register</RouterLink>
-      </section> -->
+          <RouterLink :class=$style.login to="/login">Login</RouterLink>
+          <RouterLink :class=$style.register to="/register">Register</RouterLink>
+        </section> -->
   </header>
 </template>
 
@@ -40,8 +42,15 @@ import { RouterLink } from 'vue-router'
   }
 }
 
+.links {
+  display: flex;
+  gap: 20px;
+
+  @include tablets {
+    gap: 10px;
+  }
+}
 .link {
-  margin-right: 20px;
   text-decoration: none;
   color: $primary-text-color;
   transition: .2s;

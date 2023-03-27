@@ -1,5 +1,4 @@
 <script lang="ts">
-
 export default {
   props: {
     title: {
@@ -25,7 +24,7 @@ export default {
 </script>
 
 <template>
-  <section>
+  <section :class=$style.container>
     <h1 :class=$style.title>{{ title }}</h1>
     <h2 :class=$style.date>{{ date }}</h2>
     <p :class=$style.paragraph v-for="paragraph in getParagraphs()">{{ paragraph }}</p>
@@ -35,6 +34,13 @@ export default {
 <style module lang="scss">
 @import "../../assets/breakpoints.scss";
 @import "../../assets/colors.scss";
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
 .title {
   font-size: 2rem;
   margin-bottom: 5px;
@@ -57,5 +63,6 @@ export default {
 .paragraph {
   font-size: 1.2rem;
   margin-bottom: 20px;
+  word-break: break-word;
 }
 </style>

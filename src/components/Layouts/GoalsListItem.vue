@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     calculatePercent() {
-      return (this.currentValue / (this.goalValue / 100)).toFixed()
+      return +(this.currentValue / (this.goalValue / 100)).toFixed(2)
     }
   }
 }
@@ -26,7 +26,9 @@ export default {
   <div :class=$style.container>
     <h4 :class=$style.title>{{ goal }}</h4>
     <div :style="{ '--bar-percent': `${calculatePercent()}%` }" :class=$style.barContainer>
-      <div :class=$style.barValue>{{ currentValue }}</div>
+      <div :class=$style.barValue>
+        <span v-if="calculatePercent() > 20">{{ currentValue }}</span>
+      </div>
     </div>
     <h5></h5>
   </div>
