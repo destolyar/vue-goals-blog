@@ -18,8 +18,8 @@ const diaryEntries = ref<DiaryEntry[]>([]);
 const fetchData = async () => {
   const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(diaryQuery);
   diaryEntries.value = querySnapshot.docs.map((doc) => ({
+    ...doc.data() as DiaryEntry,
     id: doc.id,
-    ...doc.data(),
   })) as DiaryEntry[];
 };
 
@@ -28,7 +28,7 @@ onMounted(fetchData);
 
 <template>
   <section :class=$style.container>
-    <DiaryListItemVue v-for="entry in diaryEntries" v-bind:title="entry.title" v-bind:timestamp="entry.date"
+    <DiaryListItemVue v-for="entry in diaryEntries.sort((firstEntry, secondEntry) => firstEntry.date.nanoseconds - secondEntry.date.nanoseconds)" v-bind:title="entry.title" v-bind:timestamp="entry.date"
       v-bind:id="entry.id" v-bind:text="entry.text" />
   </section>
 </template>
@@ -39,6 +39,7 @@ onMounted(fetchData);
 .container {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: min-content;
   gap: 20px;
   width: 100%;
 
