@@ -28,7 +28,7 @@ onMounted(fetchData);
 
 <template>
   <section :class=$style.container>
-    <DiaryListItemVue v-for="entry in diaryEntries.sort((firstEntry, secondEntry) => firstEntry.date.nanoseconds - secondEntry.date.nanoseconds)" v-bind:title="entry.title" v-bind:timestamp="entry.date"
+    <DiaryListItemVue v-for="entry in diaryEntries.sort((firstEntry, secondEntry) => secondEntry.date.seconds - firstEntry.date.seconds)" v-bind:title="entry.title" v-bind:timestamp="entry.date"
       v-bind:id="entry.id" v-bind:text="entry.text" />
   </section>
 </template>
