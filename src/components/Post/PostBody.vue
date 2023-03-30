@@ -38,7 +38,11 @@ export default {
 .container {
   display: grid;
   grid-template-columns: 1fr;
-  width: 100%;
+  width: 60%;
+
+  @include laptop {
+    width: 100%;
+  }
 }
 
 .title {
